@@ -1,3 +1,4 @@
+<!--Harley Davidson microfiche finder-->
 <?php
 include 'config.php';
 require 'lib/class.phpmailer.php';
