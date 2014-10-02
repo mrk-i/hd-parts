@@ -6,16 +6,20 @@ a <a href="https://www.google.rs/search?q=microfiche&client=firefox-a&hs=brJ&rls
 
 The script cannot be accessed directly without POST variables defined. List of parameters:
 
-id - model id  
+id - model id
+  
 part - part 
+
 part_list - part list
+
 model - exact model name
 
-Each Post entry must match a database entry if not script will not return a parts microfiche.
-
-This is an url example with post parameters:
+Each POST variable must match a database entry if not script will not return a parts microfiche.
+This is an URL example with post parameters:
 
 http://hd-parts.org/microfiche.php?id=69&part=16&part_list=Transmission-gears&model=FLTC-1340-TOUR-GLIDE-CLASSIC-DB  
+
+If you need any help with integration you can contact me by email: mrkson AT zoho.com
 
 
 
