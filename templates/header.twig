@@ -1,0 +1,23 @@
+{% include 'meta-tags.twig' %}
+<body>
+<div id="container">
+<div id="header">
+    <h1><a href="http://{{domain}}">{{domain}}</a></h1>
+<h2>
+{% if year_title==1 %}
+    Harley Davidson {{year}} models
+{% elseif part_list==1 %}
+    Reserve and replacement list for {{bike_name}}
+{% elseif oem_list==1 %}
+    Reserve part list {{part_number}} for {{subdomain}}     
+{% elseif oem_details==1 %}
+    OEM #{{oem}}
+{% else %}
+    Harley Davidson OEM parts
+{% endif %}
+</h2>
+</div>
+<div id="navigation">
+
+    <!--set up your menu here --> Main Menu
+    </a></div>

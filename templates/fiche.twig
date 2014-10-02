@@ -1,0 +1,129 @@
+<div class="bredcrumbs">
+    <div  id="item1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        You are here:
+        <a href="http://{{domain}}" itemprop="url">
+            <span itemprop="title">Home</span>
+        </a>&nbsp;&LeftTriangle;&nbsp;
+    </div>  
+    <div id="item2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a href="http://{{domain}}/microfiche.php" itemprop="url">
+            <span itemprop="title">Harley Microfiche</span>
+        </a>
+    </div>  
+  
+</div>                      
+
+<div id="content">
+    
+    
+{% if direct_access==1 %}
+    <p><span style="color:#FF0000">No access.</span></p>
+    <h2>Either:</h2>
+    <ol><li>Some insructions here</li>
+    </ol>
+{% elseif error_sending_email==1%}
+    <p>{{mail_error}}</p>
+    <p>Error message</p>
+{% elseif db_error==1 %}
+<p>&nbsp;&nbsp;</p>
+<span style="color:#FF0000"><u>No such part number or model ID in our database.</u></span>
+<p>Please go to <a href="http://{{domain}}/">main page</a> and follow up instructions to locate your Harley Davidson OEM part number.</p>
+{% else %}    
+<p>Please opt in to get microfiche diagram of {{part_list}} for model: {{model}} Harley to your e-mail address. Microfiche diagram to your inbox! </p>        
+<link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+<style type="text/css">
+	.hidden{
+		display:none;
+	}
+</style>
+
+<script type="text/javascript">
+
+
+// VALIDATE THE reCAPTCHA
+    function recapVerify(form){
+    //console.log(form);
+    //alert("in submit handler");
+        $.ajax({
+	    type:'post',
+	    url: 'captcha_check.php',
+	    data: {
+	        recaptcha_challenge_field:$('#recaptcha_challenge_field').val(),
+	        recaptcha_response_field:$('#recaptcha_response_field').val()
+	    }
+	}).done(function(data, textStatus, jqXHR){
+	    if (data == 'success'){
+	        $('#err').addClass('hidden');
+	        document.forms[0].submit(); // uncomment this line to submit your form
+			//alert('Success, the form and reCAPTCHA validated, your form was submitted');
+	    } else {
+	        $('#err').removeClass('hidden');
+	    }
+	}).fail(function(jqXHR,textStatus,errorThrown){
+            console.log('proxy or service failure');
+	});
+    }
+
+    // WHEN CALLED THIS INSETS THE reCAPTCHA INTO THE PAGE
+    function reCapInsert(){
+        Recaptcha.create('6LfPK_kSAAAAAP6qLxQkrUBPOLLlrV9HFrTBJQQq',  // public key
+        'recap',
+            {
+                theme: 'white',
+                callback: Recaptcha.focus_response_field
+            }
+	);
+    }
+
+    // WHEN THE DOM HAS LOADED FIRE THE reCapInsert FUNCTION TO INSERT THE reCAPTCHA
+    $( document ).ready(function(){
+        reCapInsert();
+    });
+</script>
+<p>Model: {{model}} <br></p>
+
+<form id="myform" method="post" action="microfiche.php">
+
+Email: <input id="email"  type="text" name="email" />
+<br/>
+<div id="recap"></div>
+<div id="err" class="hidden" style="background-color:#FFFF00;color:#FF0000;margin:12px 0px 12px 0px;">The Captcha wasn't entered correctly. Please try again.</div>
+<input type="hidden" name="microfiche" value="{{part_image}}" />
+<input type="hidden" name="model_id" value="{{model_id}}" />
+<input type="hidden" name="part_number" value="{{part_number}}" />
+<input type="hidden" name="model_name" value="{{model}}" />
+<input type="hidden" name="part_list" value="{{part_list}}" />
+<p></p>
+<input id="myform-submit" type="submit" value="Get Microfiche!">
+</form>
+
+
+<script>
+$(document).ready(function(){
+    $("#myform").validate({
+        rules: {
+            email : {
+                email : true,
+                required : true                
+           }
+        },
+            submitHandler : recapVerify
+    });
+});
+
+function recaptchaVerify(form){
+    console.log(form);
+    alert("in submit handler");
+    
+    
+}
+</script>
+            
+{% endif %}            
+    <p>&nbsp;&nbsp;</p>
+    </div>

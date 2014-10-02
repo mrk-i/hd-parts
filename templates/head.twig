@@ -1,0 +1,49 @@
+{# empty Twig template #}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>{% if year_title==1 %}{% block model_year_title %}{% endblock %}
+{% elseif id_title==1 %}{% block quotes_from_author_title %}{% endblock %}
+{% elseif part_list==1 %}{% block part_list_title %}{% endblock %}
+{% elseif links_title==1 %}{% block links_title %}{% endblock %}{% elseif oem_list==1%}{% block oem_list_title %}{% endblock %}
+{% elseif oem_details==1%}{% block oem_title %}{% endblock %}
+{% elseif staff==1%}{% block staff_title %}{% endblock %}
+{% elseif contact==1%}{% block contact_title %}{% endblock %}
+{% elseif search_title==1%}{% block search_title %}{% endblock %} 
+{% elseif cruiser_title==1%}{% block cruiser_title %}{% endblock %}    
+{% elseif help==1%}{% block help_title %}{% endblock %}
+{% elseif microfiche==1%}{% block microfiche_title %}{% endblock %}     
+{% else %}{% block default_title %}{% endblock %}{% endif %}</title>        
+{% if year_descriptions==1 %}
+    {% block model_year_descriptions %}{% endblock %}
+{% elseif id_descriptions==1 %}
+    {% block quotes_from_author_description %}{% endblock %}
+{% elseif part_list==1 %}
+    {% block part_list_description %}{% endblock %}
+{% elseif oem_list==1%}
+    {% block oem_list_descriptions %}{% endblock %}
+{% elseif oem_details==1%}
+    {% block oem_description %}{% endblock %}
+{% else %}
+    {% block default_descriptions %}{% endblock %}
+{% endif %}
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=119276628158400";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% if contact==1 %}
+{% block contact_js %}{% endblock %}
+{% endif %}
+{% if oem_details==1 %}
+{% block locked_content %}{% endblock %}
+{% endif %}
+</head>
+        
+     

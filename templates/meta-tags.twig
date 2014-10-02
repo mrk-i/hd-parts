@@ -1,0 +1,79 @@
+{% extends "head.twig" %}
+
+{% block model_year_title %}
+    List of all HD models for year {{year}}
+{% endblock %}
+
+{% block default_title %}
+   Harly Davidson OEM# {{domain}}
+{% endblock %}
+   
+{% block part_list_title %}
+   OEM # part list for {{bike_name}}
+{% endblock %}
+   
+{% block oem_list_title %}
+   List of OEM # for {{subdomain}}
+{% endblock %}   
+   
+{% block oem_title %}
+   HD {{description}} OEM #{{oem}}
+{% endblock %}   
+   
+{% block staff_title %}
+Login page for team members only
+{% endblock %}
+
+{% block contact_title %}
+Contact us
+{% endblock %}
+
+{% block links_title %}
+related Harley Davidson web sites 
+{% endblock %}
+
+{% block search_title %}
+Search for genuine hd parts powered by google
+{% endblock %}
+
+{% block help_title %}
+Youtube {{domain}}
+{% endblock %}
+
+{% block microfiche_title %}
+Microfiche diagram for Harley Davidson genuine parts
+{% endblock %}
+
+{% block cruiser_title %}
+Harley Davidson coupon codes and discounts
+{% endblock %}
+
+{% block model_year_descriptions %}
+<meta name="description" content="Find replacements and reserve parts for {{number_of_models}} Harley Davidson models build in{{year}} ">
+{% endblock %}
+
+{% block default_descriptions %}
+<meta name="description" content="Replacement and reserve parts finder by OEM numbers - {{domain}} for Harley Davidson motorcycles">
+{% endblock %}
+
+{% block part_list_description %}
+  <meta name="description" content="Reserve and replacement part finder for {{year}} {{bike_name}}"> 
+{% endblock %}
+  
+{% block oem_list_descriptions %}
+  <meta name="description" content="Replacment OEM numbers from part list {{part_number}} for {{model_name}}"> 
+{% endblock %}
+
+{% block oem_description %}
+  <meta name="description" content="Part list serial and OEM number {{oem}} for {{model_name}}"> 
+{% endblock %}
+  
+{% block contact_js %}
+<script type="text/javascript" src="js/jquery_1.5.2.js"></script>
+<script type="text/javascript" src="js/submit_form.js"></script>
+{% endblock %}
+
+{%block locked_content %}
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://{{domain}}/js/unlock_content.js"></script>
+{%endblock %}
